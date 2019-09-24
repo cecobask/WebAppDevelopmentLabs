@@ -1,0 +1,19 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+p  {
+  color: red;
+  font-family: courier, serif;
+  font-size: 180%;
+}
+
+p.linkText {
+  color: black;
+  font-weight: bold;
+}
