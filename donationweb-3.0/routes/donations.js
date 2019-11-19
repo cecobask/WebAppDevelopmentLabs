@@ -39,13 +39,6 @@ router.findOne = (req, res) => {
     });
 };
 
-function getByValue(array, id) {
-    var result = array.filter(function (obj) {
-        return obj.id == id;
-    });
-    return result ? result[0] : null; // or undefined
-}
-
 function getTotalVotes(array) {
     let totalVotes = 0;
     array.forEach(function (obj) {
@@ -67,6 +60,25 @@ router.addDonation = (req, res) => {
         else
             res.json({message: 'Donation Added Successfully!'})
     });
+};
+
+router.editDonation = async (req, res) => {
+    let donation = await Donation.findByIdAndUpdate(req.params.id, {
+        paymenttype: req.body.paymenttype,
+        amount: req.body.amount,
+        upvotes: req.body.upvotes
+    });
+    if (!donation) {
+        res.status(404);
+        res.json({
+            message: 'Donation NOT Found!'
+        });
+    } else {
+        res.json({
+            message: 'Donation Successfully UpDated!',
+            data: donation
+        });
+    }
 };
 
 router.incrementUpvotes = (req, res) => {

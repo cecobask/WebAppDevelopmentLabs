@@ -35,6 +35,7 @@ app.get('/donations/:id', donations.findOne);
 app.post('/donations',donations.addDonation);
 
 app.put('/donations/:id/vote', donations.incrementUpvotes);
+app.put('/donations/:id', donations.editDonation);
 
 app.delete('/donations/:id', donations.deleteDonation);
 
